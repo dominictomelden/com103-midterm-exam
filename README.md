@@ -1,1 +1,1 @@
-# BSIT-1B_MIDTERMS
+This Python program lets FCPC students track their class’s game results during intramurals. It asks for your section and coordinator, shows the sports list, and lets you enter up to four game results (sport, opponent, win/loss). Wins get 3 points, losses 0. At the end, it totals the points, determines your standing (“GOLD CONTENDER”, “SILVER PUSH”, or “KEEP FIGHTING!”), and neatly displays all your results.
