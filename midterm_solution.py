@@ -1,29 +1,42 @@
 sports = ["Basketball", "Volleyball", "Badminton", "Chess", "Table Tennis"]
 categories = ["Team", "Team", "Individual", "Individual", "Individual"]
+section = ""
+section_ok = False
+while section_ok == False:
+    section = input("Class section: ")
+    if section == "":
+        print("Invalid input. Please enter a class section.")
+    else:
+        section_ok = True
 
-section = input("Class section: ")
-coordinator = input("Coordinator name: ")
+coordinator = ""
+coordinator_ok = False
+while coordinator_ok == False:
+    coordinator = input("Coordinator name: ")
+    if coordinator == "":
+        print("Invalid input. Please enter a coordinator name.")
+    else:
+        coordinator_ok = True
 
 print("\n" + "="*40)
 print("  INTRAMURALS -- SPORTS EVENTS")
 print("="*40)
 for i in range(5):
-    print(" {}. {:12} [{}]".format(i+1, sports[i], categories[i]))
-print("="*40, "\n")
+    print(" " + str(i+1) + ". " + sports[i] + "    [" + categories[i] + "]")
+print("="*40 + "\n")
 
 games = []
 
 for game_no in range(1, 5):
-    print("--- GAME {} ---".format(game_no))
+    print("--- GAME " + str(game_no) + " ---")
     snum_input = input("Sport number (0 to skip): ")
-    # BASIC: Just try to convert. If error, skip
     if snum_input == "0":
         print()
         continue
     if snum_input == "1" or snum_input == "2" or snum_input == "3" or snum_input == "4" or snum_input == "5":
         snum = int(snum_input)
         opp = input("Opposing section: ")
-        res = input("Result (W/L): ").strip().upper()
+        res = input("Result (W/L): ").upper()
         if res == "W":
             pts = 3
         else:
@@ -46,9 +59,9 @@ else:
     standing = "KEEP FIGHTING!"
 
 print("="*47)
-print("     {} -- GAME RESULTS BOARD".format(section))
+print("     " + section + " -- GAME RESULTS BOARD")
 print("="*47)
-print("Coordinator : {}".format(coordinator))
+print("Coordinator : " + coordinator)
 print("---------------------------------------------")
 
 for idx in range(len(games)):
@@ -57,33 +70,12 @@ for idx in range(len(games)):
         res_word = "WIN"
     else:
         res_word = "LOSS"
-    print("[{}] {:11} [{}]".format(idx+1, g[1], g[2]))
-    print("    vs {}  |  Result: {:4} |  Points: {}".format(g[3], res_word, g[5]))
+    print("[" + str(idx+1) + "] " + g[1] + " [" + g[2] + "]")
+    print("    vs " + g[3] + "  |  Result: " + res_word + "  |  Points: " + str(g[5]))
     print()
 if len(games) == 0:
     print("(No games recorded)\n")
 print("---------------------------------------------")
-print("Total Points   : {}".format(total_points))
-print("Standing       : {}".format(standing))
+print("Total Points   : " + str(total_points))
+print("Standing       : " + standing)
 print("="*47)
-
-"""
-=============================================
-     BSIT-1B -- GAME RESULTS BOARD
-=============================================
-Coordinator : Sir Raffy
----------------------------------------------
-[1] Basketball [Team]
-    vs BSIT-1C  |  Result: WIN  |  Points: 3
-
-[2] Badminton  [Individual]
-    vs BSIT-1D  |  Result: WIN  |  Points: 3
-
-[3] Volleyball [Team]
-    vs BSIT-1A  |  Result: LOSS |  Points: 0
-
----------------------------------------------
-Total Points   : 6
-Standing       : SILVER PUSH
-=============================================
-"""
